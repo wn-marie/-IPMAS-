@@ -28,17 +28,7 @@ Complete guide for deploying IPMAS frontend and backend to production.
   - Docker-based deployment
 - **Cons**: Requires CLI installation
 
-### Option 2: **Render** (Great for Free Tier)
-**Best for**: Free hosting with good features
-- **Cost**: Free tier available, then ~$7-25/month
-- **Pros**:
-  - Free PostgreSQL database
-  - Free static site hosting
-  - Automatic SSL
-  - Good documentation
-- **Cons**: Free tier spins down after inactivity
-
-### Option 3: **DigitalOcean App Platform**
+### Option 2: **DigitalOcean App Platform**
 **Best for**: Production-ready, scalable
 - **Cost**: ~$12-25/month
 - **Pros**:
@@ -48,7 +38,7 @@ Complete guide for deploying IPMAS frontend and backend to production.
   - Professional support
 - **Cons**: More expensive than alternatives
 
-### Option 4: **Vercel (Frontend) + Fly.io/Render (Backend)**
+### Option 3: **Vercel (Frontend) + Fly.io (Backend)**
 **Best for**: Best performance, separate optimization
 - **Cost**: Free tier available
 - **Pros**:
@@ -63,7 +53,6 @@ Complete guide for deploying IPMAS frontend and backend to production.
 
 ### For Quick Demo/Testing:
 1. **Fly.io** (Full stack) - Generous free tier, no spin-downs ⭐
-2. **Render** (Full stack) - Good free tier
 
 ### For Production:
 1. **DigitalOcean App Platform** - Best balance
@@ -71,9 +60,8 @@ Complete guide for deploying IPMAS frontend and backend to production.
 3. **Google Cloud Run** - Serverless containers
 
 ### For Budget-Conscious:
-1. **Render** - Best free tier
-2. **Fly.io** - Generous free tier
-3. **Heroku** (if using Eco dynos)
+1. **Fly.io** - Generous free tier ⭐
+2. **Heroku** (if using Eco dynos)
 
 ---
 
@@ -269,47 +257,7 @@ See **[FLYIO_DEPLOYMENT_GUIDE.md](FLYIO_DEPLOYMENT_GUIDE.md)** for complete step
 
 ---
 
-### Guide 2: Deploy to Render
-
-#### Backend Deployment:
-
-1. **Sign up** at [render.com](https://render.com)
-2. **New** → "Web Service"
-3. **Connect GitHub** and select repository
-4. **Configure**:
-   - Name: `ipmas-backend`
-   - Environment: `Node`
-   - Root Directory: `backend`
-   - Build Command: `npm install`
-   - Start Command: `npm start`
-5. **Add PostgreSQL Database**:
-   - New → "PostgreSQL"
-   - Name: `ipmas-db`
-   - Note: Render PostgreSQL doesn't include PostGIS by default
-   - You'll need to enable it manually or use a custom image
-6. **Add Redis** (optional):
-   - New → "Redis"
-7. **Set Environment Variables** (in Web Service settings)
-8. **Deploy**
-
-#### Frontend Deployment:
-
-1. **New** → "Static Site"
-2. **Connect GitHub** repository
-3. **Configure**:
-   - Root Directory: `frontend/public`
-   - Build Command: (leave empty or `npm install`)
-   - Publish Directory: `frontend/public`
-4. **Set Environment Variables**:
-   ```
-   API_URL=https://your-backend.onrender.com
-   ```
-5. **Update config.js** with backend URL
-6. **Deploy**
-
----
-
-### Guide 3: Deploy to DigitalOcean App Platform
+### Guide 2: Deploy to DigitalOcean App Platform
 
 1. **Sign up** at [digitalocean.com](https://digitalocean.com)
 2. **Create App** → "GitHub" → Select repository
@@ -331,7 +279,7 @@ See **[FLYIO_DEPLOYMENT_GUIDE.md](FLYIO_DEPLOYMENT_GUIDE.md)** for complete step
 
 ---
 
-### Guide 4: Deploy Frontend to Vercel + Backend to Fly.io/Render
+### Guide 3: Deploy Frontend to Vercel + Backend to Fly.io
 
 #### Frontend (Vercel):
 
@@ -344,13 +292,13 @@ See **[FLYIO_DEPLOYMENT_GUIDE.md](FLYIO_DEPLOYMENT_GUIDE.md)** for complete step
    - Output Directory: `public`
 4. **Set Environment Variables**:
    ```
-   NEXT_PUBLIC_API_URL=https://your-backend.onrender.com
+   NEXT_PUBLIC_API_URL=https://your-backend.fly.dev
    ```
 5. **Update config.js** before deploying
 6. **Deploy**
 
-#### Backend (Render):
-Follow Render backend deployment steps in Guide 1 above.
+#### Backend (Fly.io):
+Follow Fly.io backend deployment steps in Guide 1 above.
 
 ---
 
@@ -430,7 +378,6 @@ Follow Render backend deployment steps in Guide 1 above.
 
 - [Fly.io Documentation](https://fly.io/docs)
 - [Fly.io PostgreSQL Guide](https://fly.io/docs/postgres/)
-- [Render Documentation](https://render.com/docs)
 - [DigitalOcean App Platform Docs](https://docs.digitalocean.com/products/app-platform/)
 - [Vercel Documentation](https://vercel.com/docs)
 - [PostGIS Documentation](https://postgis.net/documentation/)

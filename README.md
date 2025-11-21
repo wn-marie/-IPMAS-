@@ -194,13 +194,7 @@ npm run start:frontend # Frontend only (port 3000)
    - Global edge network
    - See: [FLYIO_DEPLOYMENT_GUIDE.md](FLYIO_DEPLOYMENT_GUIDE.md)
 
-2. **Render** (Good free tier)
-   - Free PostgreSQL database
-   - Free static hosting
-   - Automatic HTTPS
-   - See: [RENDER_DEPLOYMENT_GUIDE.md](RENDER_DEPLOYMENT_GUIDE.md)
-
-3. **DigitalOcean** (Production-ready)
+2. **DigitalOcean** (Production-ready)
    - Managed PostgreSQL with PostGIS
    - Auto-scaling
    - See: [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md#guide-3-deploy-to-digitalocean-app-platform)
@@ -220,8 +214,6 @@ deploy.bat   # Windows
 
 - **[Fly.io Deployment Guide](FLYIO_DEPLOYMENT_GUIDE.md)** - Step-by-step Fly.io deployment (recommended) ⭐
 - **[Fly.io Deployment Checklist](FLYIO_DEPLOYMENT_CHECKLIST.md)** - Fly.io deployment checklist
-- **[Render Deployment Guide](RENDER_DEPLOYMENT_GUIDE.md)** - Step-by-step Render deployment
-- **[Render Deployment Checklist](RENDER_DEPLOYMENT_CHECKLIST.md)** - Render deployment checklist
 - **[Complete Deployment Guide](DEPLOYMENT_GUIDE.md)** - All platforms and options
 - **[Deployment Summary](DEPLOYMENT_SUMMARY.md)** - Quick comparison of platforms
 

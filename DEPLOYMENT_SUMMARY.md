@@ -11,12 +11,6 @@
 - ✅ Global edge network
 - 📖 See: `FLYIO_DEPLOYMENT_GUIDE.md`
 
-### For Free Hosting (Alternative)
-**Render** - Good free tier
-- ✅ Free PostgreSQL
-- ✅ Free static hosting
-- ⚠️ Spins down after inactivity (free tier)
-
 ### For Production
 **DigitalOcean App Platform** - Best balance
 - ✅ Managed PostgreSQL with PostGIS
@@ -37,7 +31,6 @@
 | Platform | Setup Time | Cost | PostgreSQL | PostGIS | Best For |
 |----------|-----------|------|------------|---------|----------|
 | **Fly.io** | 25 min | Free-$10/mo | ✅ Free | ✅ Built-in | Free hosting ⭐ |
-| **Render** | 20 min | Free-$25/mo | ✅ Free | ⚠️ Manual | Free hosting |
 | **DigitalOcean** | 30 min | $12-25/mo | ✅ Managed | ✅ Built-in | Production |
 | **Vercel+Fly.io** | 25 min | Free-$10/mo | ✅ Managed | ✅ Built-in | Best performance |
 | **Docker (VPS)** | 45 min | $5-10/mo | Self-hosted | ✅ Full control | Custom setup |
@@ -62,11 +55,9 @@
 
 1. **`FLYIO_DEPLOYMENT_GUIDE.md`** - Step-by-step Fly.io deployment (recommended) ⭐
 2. **`FLYIO_DEPLOYMENT_CHECKLIST.md`** - Fly.io deployment checklist
-3. **`RENDER_DEPLOYMENT_GUIDE.md`** - Step-by-step Render deployment
-4. **`RENDER_DEPLOYMENT_CHECKLIST.md`** - Render deployment checklist
-5. **`DEPLOYMENT_GUIDE.md`** - Complete guide with all platforms
-6. **`nginx.conf`** - Nginx config for Docker deployments
-7. **`deploy.sh` / `deploy.bat`** - Helper scripts for Docker deployment
+3. **`DEPLOYMENT_GUIDE.md`** - Complete guide with all platforms
+4. **`nginx.conf`** - Nginx config for Docker deployments
+5. **`deploy.sh` / `deploy.bat`** - Helper scripts for Docker deployment
 
 ---
 
