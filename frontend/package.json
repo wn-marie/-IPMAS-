@@ -6,8 +6,8 @@
   "scripts": {
     "start": "http-server public -p 3000 -c-1",
     "dev": "http-server public -p 3000 -c-1 --cors",
-    "build": "webpack --mode production",
-    "build:dev": "webpack --mode development",
+    "build": "echo 'No build needed - static files in public/'",
+    "build:dev": "echo 'No build needed - static files in public/'",
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint src/",
