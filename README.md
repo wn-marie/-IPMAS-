@@ -181,6 +181,47 @@ npm run start:frontend # Frontend only (port 3000)
 
 ---
 
+## 🚀 Deployment
+
+### Quick Deployment Options
+
+**For a live demo, we recommend:**
+
+1. **Railway** (Easiest - 15 minutes) ⭐
+   - One-click deployment from GitHub
+   - Managed PostgreSQL with PostGIS
+   - Automatic HTTPS
+   - See: [DEPLOYMENT_QUICK_START.md](DEPLOYMENT_QUICK_START.md)
+
+2. **Render** (Best free tier)
+   - Free PostgreSQL database
+   - Free static hosting
+   - See: [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md#guide-2-deploy-to-render)
+
+3. **DigitalOcean** (Production-ready)
+   - Managed PostgreSQL with PostGIS
+   - Auto-scaling
+   - See: [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md#guide-3-deploy-to-digitalocean-app-platform)
+
+### Docker Deployment
+
+```bash
+# Using Docker Compose
+docker-compose up -d
+
+# Or use helper script
+./deploy.sh  # Linux/Mac
+deploy.bat   # Windows
+```
+
+### Documentation
+
+- **[Quick Start Guide](DEPLOYMENT_QUICK_START.md)** - Step-by-step Railway deployment
+- **[Complete Deployment Guide](DEPLOYMENT_GUIDE.md)** - All platforms and options
+- **[Deployment Summary](DEPLOYMENT_SUMMARY.md)** - Quick comparison of platforms
+
+---
+
 ## 📊 Data Source Priority
 
 The system uses an intelligent priority system:

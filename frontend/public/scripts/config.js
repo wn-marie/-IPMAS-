@@ -1,14 +1,35 @@
 /**
  * IPMAS Frontend Configuration
  * Configuration for frontend to connect to backend API
+ * Automatically detects production vs development environment
  */
+
+// Detect environment
+const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
+const defaultBackendUrl = isProduction 
+    ? window.location.origin.replace(/^https?:\/\/([^.]+)/, 'https://$1-backend') // Auto-detect backend URL
+    : 'http://localhost:3001';
+
+// Get backend URL from environment variable or use default
+const getBackendUrl = () => {
+    // Check if API_URL is set in window (can be set by deployment platform)
+    if (window.API_URL) {
+        return window.API_URL;
+    }
+    // Check if set via meta tag (for static deployments)
+    const metaApiUrl = document.querySelector('meta[name="api-url"]');
+    if (metaApiUrl) {
+        return metaApiUrl.getAttribute('content');
+    }
+    return defaultBackendUrl;
+};
 
 // Backend API Configuration
 const API_CONFIG = {
-    // Backend runs on port 3001 (API only)
-    BASE_URL: 'http://localhost:3001',
+    // Backend URL - automatically detected or can be overridden
+    BASE_URL: getBackendUrl(),
     // Socket.IO server URL (same as backend)
-    SOCKET_URL: 'http://localhost:3001',
+    SOCKET_URL: getBackendUrl(),
     VERSION: 'v1',
     ENDPOINTS: {
         ANALYTICS: '/api/v1/analytics',
