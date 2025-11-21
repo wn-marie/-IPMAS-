@@ -5,6 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-13%2B-blue.svg)](https://www.postgresql.org/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-brightgreen)](https://ipmas-frontend-fawn.vercel.app)
 
 **IPMAS** is a comprehensive, production-ready platform for poverty mapping, analysis, and prediction using machine learning. Built with real Kenyan household data, it provides data-driven insights to support policy decisions, resource allocation, and targeted interventions.
 
@@ -183,18 +184,31 @@ npm run start:frontend # Frontend only (port 3000)
 
 ## 🚀 Deployment
 
+### 🌐 Live Demo
+
+**Frontend**: [https://ipmas-frontend-fawn.vercel.app](https://ipmas-frontend-fawn.vercel.app)
+
+> **Note**: Backend is being deployed. Some features may not work until backend is connected.
+
+---
+
 ### Quick Deployment Options
 
 **For a live demo, we recommend:**
 
-1. **Fly.io** (Generous free tier, no spin-downs) ⭐
+1. **Neon + Render** (No payment required) ⭐
+   - Neon: Free PostgreSQL with PostGIS
+   - Render: Free backend hosting
+   - See: [NEON_RENDER_DEPLOYMENT.md](NEON_RENDER_DEPLOYMENT.md)
+
+2. **Fly.io** (Generous free tier, no spin-downs)
    - PostgreSQL with PostGIS included
    - 3 VMs on free tier
    - No spin-downs
    - Global edge network
    - See: [FLYIO_DEPLOYMENT_GUIDE.md](FLYIO_DEPLOYMENT_GUIDE.md)
 
-2. **DigitalOcean** (Production-ready)
+3. **DigitalOcean** (Production-ready)
    - Managed PostgreSQL with PostGIS
    - Auto-scaling
    - See: [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md#guide-3-deploy-to-digitalocean-app-platform)
@@ -212,7 +226,10 @@ deploy.bat   # Windows
 
 ### Documentation
 
-- **[Fly.io Deployment Guide](FLYIO_DEPLOYMENT_GUIDE.md)** - Step-by-step Fly.io deployment (recommended) ⭐
+- **[Neon + Render Deployment](NEON_RENDER_DEPLOYMENT.md)** - Step-by-step guide (no payment required) ⭐
+- **[Vercel Frontend Deployment](VERCEL_FRONTEND_DEPLOYMENT.md)** - Frontend deployment guide
+- **[Backend Alternatives](BACKEND_ALTERNATIVES.md)** - Backend hosting options
+- **[Fly.io Deployment Guide](FLYIO_DEPLOYMENT_GUIDE.md)** - Step-by-step Fly.io deployment
 - **[Fly.io Deployment Checklist](FLYIO_DEPLOYMENT_CHECKLIST.md)** - Fly.io deployment checklist
 - **[Complete Deployment Guide](DEPLOYMENT_GUIDE.md)** - All platforms and options
 - **[Deployment Summary](DEPLOYMENT_SUMMARY.md)** - Quick comparison of platforms
