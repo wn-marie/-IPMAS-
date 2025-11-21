@@ -17,17 +17,7 @@ Complete guide for deploying IPMAS frontend and backend to production.
 
 ## 🎯 Quick Start Options
 
-### Option 1: **Railway** (Recommended for Quick Demo) ⭐
-**Best for**: Quick deployment, managed PostgreSQL, easy setup
-- **Cost**: Free tier available, then ~$5-20/month
-- **Pros**: 
-  - One-click PostgreSQL with PostGIS
-  - Automatic HTTPS
-  - Simple environment variable management
-  - Good for demos and small projects
-- **Cons**: Limited free tier resources
-
-### Option 2: **Render** (Great for Free Tier)
+### Option 1: **Render** (Recommended for Free Tier) ⭐
 **Best for**: Free hosting with good features
 - **Cost**: Free tier available, then ~$7-25/month
 - **Pros**:
@@ -37,7 +27,7 @@ Complete guide for deploying IPMAS frontend and backend to production.
   - Good documentation
 - **Cons**: Free tier spins down after inactivity
 
-### Option 3: **DigitalOcean App Platform**
+### Option 2: **DigitalOcean App Platform**
 **Best for**: Production-ready, scalable
 - **Cost**: ~$12-25/month
 - **Pros**:
@@ -47,7 +37,7 @@ Complete guide for deploying IPMAS frontend and backend to production.
   - Professional support
 - **Cons**: More expensive than alternatives
 
-### Option 4: **Vercel (Frontend) + Railway/Render (Backend)**
+### Option 3: **Vercel (Frontend) + Render (Backend)**
 **Best for**: Best performance, separate optimization
 - **Cost**: Free tier available
 - **Pros**:
@@ -61,8 +51,8 @@ Complete guide for deploying IPMAS frontend and backend to production.
 ## 🏆 Recommended Platforms by Use Case
 
 ### For Quick Demo/Testing:
-1. **Railway** (Full stack) - Easiest setup
-2. **Render** (Full stack) - Good free tier
+1. **Render** (Full stack) - Best free tier
+2. **Fly.io** (Full stack) - Generous free tier
 
 ### For Production:
 1. **DigitalOcean App Platform** - Best balance
@@ -248,71 +238,7 @@ const API_CONFIG = {
 
 ## 📝 Step-by-Step Guides
 
-### Guide 1: Deploy to Railway (Easiest)
-
-#### Backend Deployment:
-
-1. **Sign up** at [railway.app](https://railway.app)
-2. **Create New Project** → "Deploy from GitHub repo"
-3. **Select your repository**: `wn-marie/-IPMAS-`
-4. **Add PostgreSQL**:
-   - Click "+ New" → "Database" → "Add PostgreSQL"
-   - Railway automatically provides connection string
-5. **Add Redis** (optional):
-   - Click "+ New" → "Database" → "Add Redis"
-6. **Configure Backend Service**:
-   - Root Directory: `backend`
-   - Build Command: `npm install`
-   - Start Command: `npm start`
-   - Port: `3001`
-7. **Set Environment Variables**:
-   ```
-   NODE_ENV=production
-   PORT=3001
-   DB_HOST=${{Postgres.PGHOST}}
-   DB_PORT=${{Postgres.PGPORT}}
-   DB_NAME=${{Postgres.PGDATABASE}}
-   DB_USER=${{Postgres.PGUSER}}
-   DB_PASSWORD=${{Postgres.PGPASSWORD}}
-   REDIS_HOST=${{Redis.REDIS_HOST}}
-   REDIS_PORT=${{Redis.REDIS_PORT}}
-   JWT_SECRET=your-secret-here
-   CORS_ORIGIN=https://your-frontend.railway.app
-   ```
-8. **Deploy** - Railway will build and deploy automatically
-9. **Get Backend URL** - Railway provides HTTPS URL
-
-#### Frontend Deployment:
-
-1. **Add New Service** in same Railway project
-2. **Select Frontend Directory**: `frontend`
-3. **Configure**:
-   - Build Command: `npm install`
-   - Start Command: `npm start`
-   - Port: `3000`
-4. **Set Environment Variables**:
-   ```
-   API_URL=https://your-backend.railway.app
-   ```
-5. **Update Frontend Config**:
-   - Update `frontend/public/scripts/config.js` with backend URL
-6. **Deploy**
-
-#### Enable PostGIS:
-
-Railway PostgreSQL doesn't include PostGIS by default. Add this:
-
-1. Go to PostgreSQL service
-2. Click "Connect" → "PostgreSQL"
-3. Run:
-   ```sql
-   CREATE EXTENSION IF NOT EXISTS postgis;
-   CREATE EXTENSION IF NOT EXISTS postgis_topology;
-   ```
-
----
-
-### Guide 2: Deploy to Render
+### Guide 1: Deploy to Render (Recommended for Free Tier)
 
 #### Backend Deployment:
 
@@ -352,7 +278,7 @@ Railway PostgreSQL doesn't include PostGIS by default. Add this:
 
 ---
 
-### Guide 3: Deploy to DigitalOcean App Platform
+### Guide 2: Deploy to DigitalOcean App Platform
 
 1. **Sign up** at [digitalocean.com](https://digitalocean.com)
 2. **Create App** → "GitHub" → Select repository
@@ -374,7 +300,7 @@ Railway PostgreSQL doesn't include PostGIS by default. Add this:
 
 ---
 
-### Guide 4: Deploy Frontend to Vercel + Backend to Railway
+### Guide 3: Deploy Frontend to Vercel + Backend to Render
 
 #### Frontend (Vercel):
 
@@ -387,13 +313,13 @@ Railway PostgreSQL doesn't include PostGIS by default. Add this:
    - Output Directory: `public`
 4. **Set Environment Variables**:
    ```
-   NEXT_PUBLIC_API_URL=https://your-backend.railway.app
+   NEXT_PUBLIC_API_URL=https://your-backend.onrender.com
    ```
 5. **Update config.js** before deploying
 6. **Deploy**
 
-#### Backend (Railway):
-Follow Railway backend deployment steps above.
+#### Backend (Render):
+Follow Render backend deployment steps in Guide 1 above.
 
 ---
 
@@ -471,7 +397,6 @@ Follow Railway backend deployment steps above.
 
 ## 📚 Additional Resources
 
-- [Railway Documentation](https://docs.railway.app)
 - [Render Documentation](https://render.com/docs)
 - [DigitalOcean App Platform Docs](https://docs.digitalocean.com/products/app-platform/)
 - [Vercel Documentation](https://vercel.com/docs)
@@ -481,10 +406,9 @@ Follow Railway backend deployment steps above.
 
 ## 💡 Quick Recommendations
 
-**For a quick demo**: Use **Railway** - it's the fastest to set up
 **For free hosting**: Use **Render** - best free tier
 **For production**: Use **DigitalOcean** - best balance of features and cost
-**For best performance**: Use **Vercel (frontend) + Railway (backend)**
+**For best performance**: Use **Vercel (frontend) + Render (backend)**
 
 ---
 

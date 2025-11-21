@@ -187,16 +187,11 @@ npm run start:frontend # Frontend only (port 3000)
 
 **For a live demo, we recommend:**
 
-1. **Railway** (Easiest - 15 minutes) ⭐
-   - One-click deployment from GitHub
-   - Managed PostgreSQL with PostGIS
-   - Automatic HTTPS
-   - See: [DEPLOYMENT_QUICK_START.md](DEPLOYMENT_QUICK_START.md)
-
-2. **Render** (Best free tier)
+1. **Render** (Best free tier) ⭐
    - Free PostgreSQL database
    - Free static hosting
-   - See: [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md#guide-2-deploy-to-render)
+   - Automatic HTTPS
+   - See: [RENDER_DEPLOYMENT_GUIDE.md](RENDER_DEPLOYMENT_GUIDE.md)
 
 3. **DigitalOcean** (Production-ready)
    - Managed PostgreSQL with PostGIS
@@ -216,7 +211,8 @@ deploy.bat   # Windows
 
 ### Documentation
 
-- **[Quick Start Guide](DEPLOYMENT_QUICK_START.md)** - Step-by-step Railway deployment
+- **[Render Deployment Guide](RENDER_DEPLOYMENT_GUIDE.md)** - Step-by-step Render deployment
+- **[Render Deployment Checklist](RENDER_DEPLOYMENT_CHECKLIST.md)** - Render deployment checklist
 - **[Complete Deployment Guide](DEPLOYMENT_GUIDE.md)** - All platforms and options
 - **[Deployment Summary](DEPLOYMENT_SUMMARY.md)** - Quick comparison of platforms
 
