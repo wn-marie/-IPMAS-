@@ -17,7 +17,18 @@ Complete guide for deploying IPMAS frontend and backend to production.
 
 ## 🎯 Quick Start Options
 
-### Option 1: **Render** (Recommended for Free Tier) ⭐
+### Option 1: **Fly.io** (Recommended - Generous Free Tier) ⭐
+**Best for**: Free hosting with no spin-downs
+- **Cost**: Free tier available, then ~$6-10/month
+- **Pros**:
+  - Generous free tier (3 VMs, 3GB storage)
+  - PostgreSQL with PostGIS included
+  - No spin-downs on free tier
+  - Global edge network
+  - Docker-based deployment
+- **Cons**: Requires CLI installation
+
+### Option 2: **Render** (Great for Free Tier)
 **Best for**: Free hosting with good features
 - **Cost**: Free tier available, then ~$7-25/month
 - **Pros**:
@@ -27,7 +38,7 @@ Complete guide for deploying IPMAS frontend and backend to production.
   - Good documentation
 - **Cons**: Free tier spins down after inactivity
 
-### Option 2: **DigitalOcean App Platform**
+### Option 3: **DigitalOcean App Platform**
 **Best for**: Production-ready, scalable
 - **Cost**: ~$12-25/month
 - **Pros**:
@@ -37,7 +48,7 @@ Complete guide for deploying IPMAS frontend and backend to production.
   - Professional support
 - **Cons**: More expensive than alternatives
 
-### Option 3: **Vercel (Frontend) + Render (Backend)**
+### Option 4: **Vercel (Frontend) + Fly.io/Render (Backend)**
 **Best for**: Best performance, separate optimization
 - **Cost**: Free tier available
 - **Pros**:
@@ -51,8 +62,8 @@ Complete guide for deploying IPMAS frontend and backend to production.
 ## 🏆 Recommended Platforms by Use Case
 
 ### For Quick Demo/Testing:
-1. **Render** (Full stack) - Best free tier
-2. **Fly.io** (Full stack) - Generous free tier
+1. **Fly.io** (Full stack) - Generous free tier, no spin-downs ⭐
+2. **Render** (Full stack) - Good free tier
 
 ### For Production:
 1. **DigitalOcean App Platform** - Best balance
@@ -238,7 +249,27 @@ const API_CONFIG = {
 
 ## 📝 Step-by-Step Guides
 
-### Guide 1: Deploy to Render (Recommended for Free Tier)
+### Guide 1: Deploy to Fly.io (Recommended - Generous Free Tier) ⭐
+
+See **[FLYIO_DEPLOYMENT_GUIDE.md](FLYIO_DEPLOYMENT_GUIDE.md)** for complete step-by-step instructions.
+
+**Quick Summary:**
+1. Install Fly CLI: `iwr https://fly.io/install.ps1 -useb | iex` (Windows)
+2. Login: `flyctl auth login`
+3. Create PostgreSQL: `flyctl postgres create --name ipmas-db --region ord`
+4. Enable PostGIS: `flyctl postgres connect -a ipmas-db` then `CREATE EXTENSION postgis;`
+5. Deploy backend: `cd backend && flyctl launch --name ipmas-backend`
+6. Attach database: `flyctl postgres attach ipmas-db -a ipmas-backend`
+7. Set secrets: `flyctl secrets set JWT_SECRET="..." -a ipmas-backend`
+8. Deploy: `flyctl deploy -a ipmas-backend`
+9. Deploy frontend: `cd frontend && flyctl launch --name ipmas-frontend`
+10. Update CORS: `flyctl secrets set CORS_ORIGIN="..." -a ipmas-backend`
+
+**Full Guide**: [FLYIO_DEPLOYMENT_GUIDE.md](FLYIO_DEPLOYMENT_GUIDE.md)
+
+---
+
+### Guide 2: Deploy to Render
 
 #### Backend Deployment:
 
@@ -278,7 +309,7 @@ const API_CONFIG = {
 
 ---
 
-### Guide 2: Deploy to DigitalOcean App Platform
+### Guide 3: Deploy to DigitalOcean App Platform
 
 1. **Sign up** at [digitalocean.com](https://digitalocean.com)
 2. **Create App** → "GitHub" → Select repository
@@ -300,7 +331,7 @@ const API_CONFIG = {
 
 ---
 
-### Guide 3: Deploy Frontend to Vercel + Backend to Render
+### Guide 4: Deploy Frontend to Vercel + Backend to Fly.io/Render
 
 #### Frontend (Vercel):
 
@@ -397,6 +428,8 @@ Follow Render backend deployment steps in Guide 1 above.
 
 ## 📚 Additional Resources
 
+- [Fly.io Documentation](https://fly.io/docs)
+- [Fly.io PostgreSQL Guide](https://fly.io/docs/postgres/)
 - [Render Documentation](https://render.com/docs)
 - [DigitalOcean App Platform Docs](https://docs.digitalocean.com/products/app-platform/)
 - [Vercel Documentation](https://vercel.com/docs)
@@ -406,9 +439,9 @@ Follow Render backend deployment steps in Guide 1 above.
 
 ## 💡 Quick Recommendations
 
-**For free hosting**: Use **Render** - best free tier
+**For free hosting**: Use **Fly.io** - generous free tier, no spin-downs ⭐
 **For production**: Use **DigitalOcean** - best balance of features and cost
-**For best performance**: Use **Vercel (frontend) + Render (backend)**
+**For best performance**: Use **Vercel (frontend) + Fly.io (backend)**
 
 ---
 

@@ -187,7 +187,14 @@ npm run start:frontend # Frontend only (port 3000)
 
 **For a live demo, we recommend:**
 
-1. **Render** (Best free tier) ⭐
+1. **Fly.io** (Generous free tier, no spin-downs) ⭐
+   - PostgreSQL with PostGIS included
+   - 3 VMs on free tier
+   - No spin-downs
+   - Global edge network
+   - See: [FLYIO_DEPLOYMENT_GUIDE.md](FLYIO_DEPLOYMENT_GUIDE.md)
+
+2. **Render** (Good free tier)
    - Free PostgreSQL database
    - Free static hosting
    - Automatic HTTPS
@@ -211,6 +218,8 @@ deploy.bat   # Windows
 
 ### Documentation
 
+- **[Fly.io Deployment Guide](FLYIO_DEPLOYMENT_GUIDE.md)** - Step-by-step Fly.io deployment (recommended) ⭐
+- **[Fly.io Deployment Checklist](FLYIO_DEPLOYMENT_CHECKLIST.md)** - Fly.io deployment checklist
 - **[Render Deployment Guide](RENDER_DEPLOYMENT_GUIDE.md)** - Step-by-step Render deployment
 - **[Render Deployment Checklist](RENDER_DEPLOYMENT_CHECKLIST.md)** - Render deployment checklist
 - **[Complete Deployment Guide](DEPLOYMENT_GUIDE.md)** - All platforms and options

@@ -2,8 +2,17 @@
 
 ## 🎯 Recommended Options
 
-### For Free Hosting (Recommended)
-**Render** - Best free tier
+### For Free Hosting (Recommended) ⭐
+**Fly.io** - Generous free tier, no spin-downs
+- ✅ 3 shared-cpu VMs (backend + frontend + database)
+- ✅ PostgreSQL with PostGIS included
+- ✅ 3GB persistent storage
+- ✅ No spin-downs on free tier
+- ✅ Global edge network
+- 📖 See: `FLYIO_DEPLOYMENT_GUIDE.md`
+
+### For Free Hosting (Alternative)
+**Render** - Good free tier
 - ✅ Free PostgreSQL
 - ✅ Free static hosting
 - ⚠️ Spins down after inactivity (free tier)
@@ -16,7 +25,7 @@
 - 💰 ~$12-25/month
 
 ### For Best Performance
-**Vercel (Frontend) + Render (Backend)**
+**Vercel (Frontend) + Fly.io (Backend)**
 - ✅ Edge network for frontend
 - ✅ Optimized for static sites
 - ✅ Free tier available
@@ -27,9 +36,10 @@
 
 | Platform | Setup Time | Cost | PostgreSQL | PostGIS | Best For |
 |----------|-----------|------|------------|---------|----------|
+| **Fly.io** | 25 min | Free-$10/mo | ✅ Free | ✅ Built-in | Free hosting ⭐ |
 | **Render** | 20 min | Free-$25/mo | ✅ Free | ⚠️ Manual | Free hosting |
 | **DigitalOcean** | 30 min | $12-25/mo | ✅ Managed | ✅ Built-in | Production |
-| **Vercel+Render** | 25 min | Free-$20/mo | ✅ Managed | ⚠️ Manual | Best performance |
+| **Vercel+Fly.io** | 25 min | Free-$10/mo | ✅ Managed | ✅ Built-in | Best performance |
 | **Docker (VPS)** | 45 min | $5-10/mo | Self-hosted | ✅ Full control | Custom setup |
 
 ---
@@ -50,26 +60,29 @@
 
 ## 📚 Documentation
 
-1. **`RENDER_DEPLOYMENT_GUIDE.md`** - Step-by-step Render deployment (recommended for first-time)
-2. **`RENDER_DEPLOYMENT_CHECKLIST.md`** - Render deployment checklist
-3. **`DEPLOYMENT_GUIDE.md`** - Complete guide with all platforms
-4. **`nginx.conf`** - Nginx config for Docker deployments
-5. **`deploy.sh` / `deploy.bat`** - Helper scripts for Docker deployment
+1. **`FLYIO_DEPLOYMENT_GUIDE.md`** - Step-by-step Fly.io deployment (recommended) ⭐
+2. **`FLYIO_DEPLOYMENT_CHECKLIST.md`** - Fly.io deployment checklist
+3. **`RENDER_DEPLOYMENT_GUIDE.md`** - Step-by-step Render deployment
+4. **`RENDER_DEPLOYMENT_CHECKLIST.md`** - Render deployment checklist
+5. **`DEPLOYMENT_GUIDE.md`** - Complete guide with all platforms
+6. **`nginx.conf`** - Nginx config for Docker deployments
+7. **`deploy.sh` / `deploy.bat`** - Helper scripts for Docker deployment
 
 ---
 
-## ⚡ Quick Start (Render)
+## ⚡ Quick Start (Fly.io)
 
-1. Sign up at [render.com](https://render.com)
-2. Create PostgreSQL database
-3. Deploy backend from GitHub repo
-4. Set environment variables
-5. Enable PostGIS extension
-6. Deploy frontend
-7. Update frontend config with backend URL
-8. Done! 🎉
+1. Install Fly CLI: `iwr https://fly.io/install.ps1 -useb | iex` (Windows)
+2. Sign up and login: `flyctl auth login`
+3. Create PostgreSQL: `flyctl postgres create --name ipmas-db`
+4. Enable PostGIS: `flyctl postgres connect -a ipmas-db` then `CREATE EXTENSION postgis;`
+5. Deploy backend: `cd backend && flyctl launch`
+6. Attach database: `flyctl postgres attach ipmas-db -a ipmas-backend`
+7. Deploy frontend: `cd frontend && flyctl launch`
+8. Update CORS and config
+9. Done! 🎉
 
-**Full instructions**: See `RENDER_DEPLOYMENT_GUIDE.md`
+**Full instructions**: See `FLYIO_DEPLOYMENT_GUIDE.md`
 
 ---
 
@@ -118,13 +131,13 @@ CORS_ORIGIN=https://your-frontend-url.com
 
 ## 💡 Pro Tips
 
-1. **Start with Render** - Best free tier for demos
+1. **Start with Fly.io** - Generous free tier, no spin-downs ⭐
 2. **Use managed PostgreSQL** - Saves time and headaches
-3. **Enable PostGIS early** - Required for geospatial features
+3. **PostGIS included** - Fly.io PostgreSQL has PostGIS built-in
 4. **Test locally first** - Use Docker Compose to test before deploying
 5. **Set up monitoring** - Use platform's built-in monitoring or add Sentry
 
 ---
 
-**Ready to deploy?** Start with `RENDER_DEPLOYMENT_GUIDE.md`! 🚀
+**Ready to deploy?** Start with `FLYIO_DEPLOYMENT_GUIDE.md`! 🚀
 
